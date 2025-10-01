@@ -1,6 +1,7 @@
 # app/llm_config.py
 
-from langchain_ollama import Ollama
+from langchain_community.llms import Ollama
+
 from langchain_openai import OpenAI  # or whatever the library is
 
 def get_llm(provider: str, **kwargs):
