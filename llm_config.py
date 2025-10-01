@@ -1,23 +1,12 @@
 # app/llm_config.py
 
-from langchain_ollama import ChatOllama  # Correct, updated import
-from langchain_openai import ChatOpenAI
+from langchain_ollama import Ollama
+from langchain_openai import OpenAI  # or whatever the library is
 
-def get_llm(llm_provider: str):
-    """
-    Returns an instance of the specified LLM.
-
-    Args:
-        llm_provider (str): The name of the LLM provider ('ollama' or 'openai').
-
-    Returns:
-        An instance of the LLM.
-    """
-    if llm_provider == "ollama":
-        # Ensure Ollama is running and the model (e.g., 'llama3.1') is available
-        return ChatOllama(model="llama3.1", temperature=0)
-    elif llm_provider == "openai":
-        # Ensure you have OPENAI_API_KEY set in your environment variables
-        return ChatOpenAI(model="gpt-4", temperature=0, streaming=True)
+def get_llm(provider: str, **kwargs):
+    if provider == "ollama":
+        return Ollama(model=kwargs.get("model_name", "llama3.1"), temperature=kwargs.get("temperature", 0))
+    elif provider == "openai":
+        return OpenAI(temperature=kwargs.get("temperature", 0), model=kwargs.get("model_name", "gpt-4"))
     else:
-        raise ValueError(f"Unsupported LLM provider: {llm_provider}")
+        raise ValueError(f"Unknown provider {provider}")
