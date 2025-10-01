@@ -127,7 +127,7 @@ streamlit run app.py
 
 
 
-![Output_Screenshot](Output.png)
+![Output](Output.png)
 
 Your web browser should automatically open a new tab with the application running at `http://localhost:8501`.
 
