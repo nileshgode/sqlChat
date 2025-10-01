@@ -124,7 +124,10 @@ Once your environment is set up and dependencies are installed, you can launch t
 
 ```bash
 streamlit run app.py
-```
+
+
+
+![Output_Screenshot](Output.png)
 
 Your web browser should automatically open a new tab with the application running at `http://localhost:8501`.
 
